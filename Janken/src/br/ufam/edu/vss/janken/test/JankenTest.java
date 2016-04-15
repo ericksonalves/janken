@@ -1,48 +1,89 @@
 package br.ufam.edu.vss.janken.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.ufam.edu.vss.janken.controller.Controller;
 import br.ufam.edu.vss.janken.model.Result;
 import br.ufam.edu.vss.janken.model.Rule;
 import br.ufam.edu.vss.janken.model.Shape;
-import br.ufam.edu.vss.janken.view.ResultPanel;
 
 public class JankenTest {
 
-	@Test
-	public void getResultTest() {
-		Controller tester = new Controller();
-		tester.init();
-		
-		Rule rulePaperRock = new Rule(Shape.PAPER,Shape.ROCK);
-		Rule rulePaperPaper  = new Rule (Shape.PAPER,Shape.PAPER);
-		Rule rulePaperScissors =  new Rule (Shape.PAPER,Shape.SCISSORS);
-		
-		Rule ruleRockPaper = new Rule (Shape.ROCK,Shape.PAPER);
-		Rule ruleRockRock =  new Rule (Shape.ROCK,Shape.ROCK);
-		Rule ruleRockScissors =  new Rule (Shape.ROCK,Shape.SCISSORS);
-		
-		Rule ruleScissorsPaper = new Rule (Shape.SCISSORS,Shape.PAPER);
-		Rule ruleScissorsScissors = new Rule (Shape.SCISSORS,Shape.SCISSORS);
-		Rule ruleScissorsRock =  new Rule (Shape.SCISSORS,Shape.ROCK);
-		
-		assertEquals (true, Result.BEATS == tester.getResult(rulePaperRock));
-		assertEquals (true, Result.TIE == tester.getResult(rulePaperPaper));
-		assertEquals (true, Result.IS_BEATEN_BY == tester.getResult(rulePaperScissors));
-		
-		assertEquals(true, Result.IS_BEATEN_BY == tester.getResult(ruleRockPaper));
-		assertEquals(true, Result.TIE == tester.getResult(ruleRockRock));
-		assertEquals(true, Result.BEATS ==  tester.getResult(ruleRockScissors));
-		
-		assertEquals(true, Result.BEATS  == tester.getResult(ruleScissorsPaper));
-		assertEquals(true, Result.TIE == tester.getResult(ruleScissorsScissors));
-		assertEquals(true, Result.IS_BEATEN_BY == tester.getResult(ruleScissorsRock));
-		
-		
-		//fail("Not yet implemented");
-	}
+    private Controller controller;
+
+    @Before
+    public void setUp() {
+        controller = new Controller();
+        controller.init();
+    }
+
+    @Test
+    public void testResultNullRule() {
+        Rule rule = null;
+        assertEquals(Result.UNKNOWN, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultPaperAndPaper() {
+        Rule rule = new Rule(Shape.PAPER, Shape.PAPER);
+        assertEquals(Result.TIE, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultPaperAndRock() {
+        Rule rule = new Rule(Shape.PAPER, Shape.ROCK);
+        assertEquals(Result.BEATS, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultPaperAndScissors() {
+        Rule rule = new Rule(Shape.PAPER, Shape.SCISSORS);
+        assertEquals(Result.IS_BEATEN_BY, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultRockAndPaper() {
+        Rule rule = new Rule(Shape.ROCK, Shape.PAPER);
+        assertEquals(Result.IS_BEATEN_BY, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultRockAndRock() {
+        Rule rule = new Rule(Shape.ROCK, Shape.ROCK);
+        assertEquals(Result.TIE, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultRockAndScissors() {
+        Rule rule = new Rule(Shape.ROCK, Shape.SCISSORS);
+        assertEquals(Result.BEATS, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultScissorsAndPaper() {
+        Rule rule = new Rule(Shape.SCISSORS, Shape.PAPER);
+        assertEquals(Result.BEATS, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultScissorsAndRock() {
+        Rule rule = new Rule(Shape.SCISSORS, Shape.ROCK);
+        assertEquals(Result.IS_BEATEN_BY, controller.getResult(rule));
+    }
+
+    @Test
+    public void testResultScissorsAndScissors() {
+        Rule rule = new Rule(Shape.SCISSORS, Shape.SCISSORS);
+        assertEquals(Result.TIE, controller.getResult(rule));
+    }
+
+    @After
+    public void tearDown() {
+        controller = null;
+    }
 
 }
