@@ -1,0 +1,32 @@
+package br.ufam.edu.vss.janken.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import br.ufam.edu.vss.janken.controller.Controller;
+import br.ufam.edu.vss.janken.model.Result;
+import br.ufam.edu.vss.janken.model.Rule;
+import br.ufam.edu.vss.janken.model.Shape;
+import br.ufam.edu.vss.janken.view.ResultPanel;
+
+public class JankenTest {
+
+	@Test
+	public void getResultTest() {
+		Controller tester = new Controller();
+		tester.init();
+		
+		Rule rulePaperRock = new Rule(Shape.PAPER,Shape.ROCK);
+		Rule rulePaperPaper  = new Rule (Shape.PAPER,Shape.PAPER);
+		Rule rulePaperScissors =  new Rule (Shape.PAPER,Shape.SCISSORS);
+		
+		
+
+		assertEquals (true, Result.BEATS == tester.getResult(rulePaperRock));
+		assertEquals (true, Result.TIE == tester.getResult(rulePaperPaper));
+		assertEquals (true, Result.BEATS == tester.getResult(rulePaperScissors));
+		//fail("Not yet implemented");
+	}
+
+}

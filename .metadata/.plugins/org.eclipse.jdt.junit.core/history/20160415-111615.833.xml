@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.ufam.edu.vss.janken.test.JankenTest.getResultTest" project="Janken" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="getResultTest" classname="br.ufam.edu.vss.janken.test.JankenTest" time="0.001"/>
+</testrun>
