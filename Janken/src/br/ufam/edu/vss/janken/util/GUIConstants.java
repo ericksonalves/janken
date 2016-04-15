@@ -6,8 +6,8 @@ public class GUIConstants {
     public static final int SHAPE_WIDTH = 120;
 
     public static final String CHOOSE_SHAPE_TEXT = "Escolha uma forma para jogar";
-    public static final String CONFIRMATION_DIALOG_TITLE = "Confirmação";
-    public static final String CONFIRMATION_TEXT = "Você escolhe %s?";
+    public static final String CONFIRMATION_DIALOG_TITLE = "ConfirmaÃ§Ã£o";
+    public static final String CONFIRMATION_TEXT = "VocÃª escolhe %s?";
     public static final String LOADING_ICON_PATH = "resources/loading.png";
     public static final String PAPER_ICON_PATH = "resources/paper.png";
     public static final String ROCK_ICON_PATH = "resources/rock.png";
@@ -15,10 +15,10 @@ public class GUIConstants {
     public static final String LOSER_ICON_PATH = "resources/loser.png";
     public static final String UNKNOWN_ICON_PATH = "resources/unknown.png";
     public static final String WINNER_ICON_PATH = "resources/winner.png";
-    public static final String LOSER_TEXT = "Que pena, você perdeu!";
-    public static final String TIE_TEXT = "Você empatou!";
-    public static final String UNKNOWN_TEXT = "Não possuo essa regra.";
-    public static final String WINNER_TEXT = "Parabéns, você venceu!";
+    public static final String LOSER_TEXT = "Que pena, vocÃª perdeu!";
+    public static final String TIE_TEXT = "VocÃª empatou!";
+    public static final String UNKNOWN_TEXT = "NÃ£o possuo essa regra.";
+    public static final String WINNER_TEXT = "ParabÃ©ns, vocÃª venceu!";
     public static final String PAPER_TEXT = "Papel";
     public static final String ROCK_TEXT = "Pedra";
     public static final String SCISSORS_TEXT = "Tesoura";
